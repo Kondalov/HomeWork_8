@@ -37,14 +37,22 @@ namespace CombinedProject
                     continue;
                 }
 
-                Console.Write("Введите имя владельца: ");
-                
-                string ownerName = Console.ReadLine();
+                string ownerName = "";
 
-                if (!IsValidName(ownerName))
+                while (true)
                 {
-                    Console.WriteLine("Имя владельца не может быть пустым и должно содержать только буквы.");
-                    continue;
+                    Console.Write("Введите имя владельца: ");
+
+                    ownerName = Console.ReadLine();
+
+                    if (IsValidName(ownerName))
+                    {
+                        break;
+                    }
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Имя владельца не может быть пустым и должно содержать только буквы. Попробуйте снова.\n");
+                    Console.ResetColor();
                 }
 
                 phoneBook[phoneNumber] = ownerName;
